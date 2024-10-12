@@ -45,7 +45,7 @@ class Employee(ABC):
         self.__manager = manager
         self.performance = INITIAL_PERFORMANCE
         self.happiness = INITIAL_HAPPINESS
-        self.salary = salary   
+        self.salary = salary
     @property
     def name(self):
         return self.__name
@@ -110,8 +110,6 @@ class Manager(Employee):
     """
     A subclass of Employee representing a manager.
     """
-    def __init__(self, name, manager, salary, savings):
-        super().__init__(name, manager, salary, savings)
     def work(self):
         performance_change = random.randint(-5,5)
         self.performance += performance_change
@@ -127,8 +125,6 @@ class TemporaryEmployee(Employee):
     """
     A subclass of Employee representing a temporary employee.
     """
-    def __init__(self, name, manager, salary, savings):
-        super().__init__(name, manager, salary, savings)
     def work(self):
         performance_change = random.randint(-15,15)
         self.performance += performance_change
@@ -153,8 +149,6 @@ class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
     """
-    def __init__(self, name, manager, salary, savings):
-        super().__init__(name, manager, salary, savings)
     def work(self):
         performance_change = random.randint(-10,10)
         self.performance += performance_change
