@@ -48,15 +48,27 @@ class Employee(ABC):
         self.salary = salary
     @property
     def name(self):
+        """
+        Gets the name of the employee.
+        """
         return self.__name
     @property
     def manager(self):
+        """
+        Gets the manager of the employee.
+        """
         return self.__manager
     @property
     def performance(self):
+        """
+        Gets the performance of the employee.
+        """
         return self._performance
     @performance.setter
     def performance(self, value):
+        """
+        Sets the performance of the employee.
+        """
         if value > PERCENTAGE_MAX:
             self._performance = PERCENTAGE_MAX
         elif value < PERCENTAGE_MIN:
@@ -65,9 +77,15 @@ class Employee(ABC):
             self._performance = value
     @property
     def happiness(self):
+        """
+        Gets the happiness of the employee.
+        """
         return self._happiness
     @happiness.setter
     def happiness(self, value):
+        """
+        Sets the happiness of the employee.
+        """
         if value > PERCENTAGE_MAX:
             self._happiness = PERCENTAGE_MAX
         elif value < PERCENTAGE_MIN:
@@ -76,16 +94,28 @@ class Employee(ABC):
             self._happiness = value
     @property
     def salary(self):
+        """
+        Gets the salary of the employee.
+        """
         return self._salary
     @salary.setter
     def salary(self, value):
+        """
+        Sets the salary of the employee.
+        """
         if value < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
         self._salary = value
     @abstractmethod
     def work(self):
+        """
+        Abstract method that is implemented by the subclasses of the Employee class.
+        """
         pass
     def interact(self, other):
+        """
+        Simulates an interaction between this employee and another employee (other).
+        """
         if other.name not in self.relationships:
             self.relationships[other.name] = 0
         if self.relationships[other.name] > RELATIONSHIP_THRESHOLD:
@@ -96,6 +126,9 @@ class Employee(ABC):
             self.relationships[other.name] -= 1
             self.happiness -= 1
     def daily_expense(self):
+        """
+        Simulates the employee’s daily expenses by reducing their happiness and savings.
+        """
         self.happiness -= 1
         self.savings -= DAILY_EXPENSE
     def __str__(self):
@@ -143,7 +176,7 @@ class TemporaryEmployee(Employee):
                 self.happiness -= 5
                 if self.salary <= 0:
                     self.is_employed = False
-            
+     
 
 class PermanentEmployee(Employee):
     """
