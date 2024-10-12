@@ -111,7 +111,6 @@ class Employee(ABC):
         """
         Abstract method that is implemented by the subclasses of the Employee class.
         """
-        pass
     def interact(self, other):
         """
         Simulates an interaction between this employee and another employee (other).
@@ -176,7 +175,7 @@ class TemporaryEmployee(Employee):
                 self.happiness -= 5
                 if self.salary <= 0:
                     self.is_employed = False
-     
+
 
 class PermanentEmployee(Employee):
     """
